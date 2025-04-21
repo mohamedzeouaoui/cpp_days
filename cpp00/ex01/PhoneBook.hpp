@@ -2,6 +2,7 @@
 #define phonebook_h_HPP
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 #include "Contact.hpp"
 
@@ -13,8 +14,10 @@ private:
     
 public:
     PhoneBook();
+    Contact getcontacts(int index);
     void addContact();
     void searchContact();
+    void exit_program();
 
 
 };
