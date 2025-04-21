@@ -8,17 +8,20 @@ void megaphone(char *string)
     char c;
 
     i = 0;
-    while (string[i])
-    {
-        if (string[i] <= 'z' && string[i] >= 'a')
-        {
-            c = string[i] -('a'- 'A');
-            std::cout << c ;
-        }
-        else
-            std::cout << string[i];
-        i++;
-    }
+    // while (string[i])
+    // {
+    //     if (string[i] <= 'z' && string[i] >= 'a')
+    //     {
+    //         c = string[i] -('a'- 'A');
+    //         std::cout << c ;
+    //     }
+    //     else
+    //         std::cout << string[i];
+    //     i++;
+    // }
+
+    for (int i = 0; string[i]; i++)
+        std::cout << (char)toupper(string[i]);
 }
 
 int main(int ac, char *av[])
