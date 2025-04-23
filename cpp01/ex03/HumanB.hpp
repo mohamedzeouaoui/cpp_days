@@ -14,10 +14,8 @@ class HumanB
 
     public:
         HumanB(std::string name);
-        std::string getName();
-        Weapon getWeapon();
         void attack();
-        ~HumanB();
+        void setWeapon(Weapon &Weapon);
 };
 
 #endif
