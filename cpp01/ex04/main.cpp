@@ -2,6 +2,31 @@
 #include <iostream>
 #include <fstream>
 
+int find_string(std::string line, std::string search)
+{
+    int position;
+
+    position = line.find(search);
+
+    if (position == std::string::npos)
+        return -1;
+    else
+        return ((int)position);    
+
+}
+
+void replace_in_file(std::string line, std::string search, std::string str_rpl , std::ofstream &file_out)
+{
+    int pos = find_string(line, search);
+    if (pos != -1)
+    {
+        file_out << line.substr(0,pos) << str_rpl << 
+        line.substr(pos + search.length(), line.length() - pos + search.length()) << std::endl;
+    }
+    else
+        file_out << line << std::endl;
+}
+
 int main(int ac, char const *av[])
 {
     std::string new_file;
@@ -38,8 +63,8 @@ int main(int ac, char const *av[])
     std::string line;
     while (std::getline(file, line))
     {
-        // line.find()
-        file_out << line << std::endl;
+        replace_in_file(line, av[2], av[3], file_out);
+        // file_out << line << std::endl;
     }
 
         
@@ -47,3 +72,4 @@ int main(int ac, char const *av[])
 
     return 0;
 }
+
