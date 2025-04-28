@@ -4,7 +4,7 @@ int main(int ac, char const *av[])
 {
     (void)ac;
     (void)av;
-    Zombie *zm = newZombie( "ahmed" );
+    Zombie *zm = newZombie( "Karim" );
     zm->announce();
     delete zm;
 

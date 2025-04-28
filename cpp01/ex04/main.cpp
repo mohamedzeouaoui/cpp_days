@@ -6,6 +6,7 @@ int find_string(std::string line, std::string search)
 {
     int position;
 
+    std::cout << line << "\n";
     position = line.find(search);
 
     if (position == std::string::npos)
@@ -17,14 +18,38 @@ int find_string(std::string line, std::string search)
 
 void replace_in_file(std::string line, std::string search, std::string str_rpl , std::ofstream &file_out)
 {
-    int pos = find_string(line, search);
-    if (pos != -1)
-    {
-        file_out << line.substr(0,pos) << str_rpl << 
-        line.substr(pos + search.length(), line.length() - pos + search.length()) << std::endl;
+    // int pos = find_string(line, search);
+    // if (pos != -1)
+    // {
+    //     file_out << line.substr(0,pos) << str_rpl << 
+    //     line.substr(pos + search.length(), line.length() - pos + search.length()) << std::endl;
+    // }
+    // else
+    //     file_out << line << std::endl;
+    int i;
+    int len = line.length();
+    int pos = 0;
+    int posss = 0;
+    while (true) {
+        pos = find_string(line.c_str() + posss + search.length(), search);
+        posss = posss + pos + search.length();
+        if(posss == len)
+            break;
+        std::cout << posss << " line = " << len;
+        if (pos == -1)
+            break;
+        line.erase(pos, search.length());
+        line.insert(pos, str_rpl);
+        std::cout << "\nline: " << line << "\n";
+        if (search == str_rpl)
+            break;
+        i++;
+        if(i == 10)
+        {
+            break;
+        }
     }
-    else
-        file_out << line << std::endl;
+    file_out << line << std::endl;
 }
 
 int main(int ac, char const *av[])

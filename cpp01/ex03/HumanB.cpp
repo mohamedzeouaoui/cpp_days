@@ -2,6 +2,8 @@
 
 void HumanB::attack()
 {
+	if (!weapon_B)
+		return ;
     std::cout << name << " attacks with their " << weapon_B->getType() << std::endl ;
 }
 void HumanB::setWeapon(Weapon &Weapon)
