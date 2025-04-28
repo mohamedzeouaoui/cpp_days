@@ -67,9 +67,6 @@ int main(int ac, char const *av[])
         // file_out << line << std::endl;
     }
 
-        
-
-
     return 0;
 }
 
