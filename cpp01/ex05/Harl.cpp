@@ -24,5 +24,17 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
+    void (Harl::*level_passed[])() = {&Harl::debug , &Harl::info, &Harl::warning, &Harl::error};
+    std::string Harl_makes[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
+    for (int i = 0; i < 4; i++)
+    {
+        if (level == Harl_makes[i])
+        {
+            (this->*level_passed[i])();
+            return ;
+        }
+        
+    }
+    
 }
