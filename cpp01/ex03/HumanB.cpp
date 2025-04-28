@@ -8,7 +8,7 @@ void HumanB::setWeapon(Weapon &Weapon)
 {
 	this->weapon_B = &Weapon;
 }
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : weapon_B(NULL)
 {
 	this->name = name;
 }
