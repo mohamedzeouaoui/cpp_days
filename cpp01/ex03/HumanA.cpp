@@ -8,4 +8,3 @@ HumanA::HumanA(std::string name, Weapon& weapon_A): name(name), weapon_A(weapon_
 {
     
 }
-
