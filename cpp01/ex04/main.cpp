@@ -17,24 +17,15 @@ int find_string(std::string line, std::string search)
 
 void replace_in_file(std::string line, std::string search, std::string str_rpl , std::ofstream &file_out)
 {
-    int len = line.length();
-    int len_search = 0;
-    int len_new = 0;
     int pos = 0;
-    int posss = 0;
     while (true) {
-        pos = find_string(line.c_str() + posss, search);
-        posss = posss + pos + str_rpl.length();
-        len_search = search.length();
-        len = len - search.length() + str_rpl.length() ;
+        if (search == str_rpl)
+            break;
+        pos = find_string(line, search);
         if (pos == -1)
             break;
         line.erase(pos, search.length());
         line.insert(pos, str_rpl);
-        if (search == str_rpl)
-            break;
-        if(posss > len)
-            break;
     }
     file_out << line << std::endl;
 }
