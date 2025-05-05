@@ -11,12 +11,12 @@ Fixed::Fixed(const Fixed& copy)
     this->val =copy.val;
 }
 
-Fixed& Fixed::operator=(const Fixed& other)
+Fixed& Fixed::operator=(const Fixed& original)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other)
+    if (this != &original)
     {
-        this->val = other.val;
+        this->val = original.val;
     }
     return *this;
 }
