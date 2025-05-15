@@ -5,7 +5,7 @@ ScavTrap::ScavTrap(std::string name_v) : ClapTrap(name_v)
     Hit_points = 100;
     Energy_points = 50;
     Attack_damage = 20;
-
+    std::cout << "ScavTrap " << name_v << " constructed.\n";
 }
 
 void ScavTrap::attack(const std::string& target)
