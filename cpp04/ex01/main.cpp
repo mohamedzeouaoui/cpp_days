@@ -3,66 +3,59 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+
 int main()
 {
+
+    std::cout << "-------- Declaration & Initialization --------\n";
+    int numAnimals = 6;
+    Animal* animals[numAnimals];
+
+    for (int i = 0; i < numAnimals/2; i++)
+        animals[i] = new Dog();
+
+    std::cout << "\n";
+
+    for (int i = numAnimals/2; i < numAnimals; i++)
+        animals[i] = new Cat();
+    std::cout << "------------------------------------------\n\n";
+    
+
+    std::cout << "====== Making Sounds ==============\n";
+    for (int i = 0; i < numAnimals; i++)
+        animals[i]->makeSound();
+    std::cout << "====================================\n\n";
+    
+
+    std::cout << "-------- freeing alocated memmory --------\n";
+    for (int i = 0; i < numAnimals; i++)
+        delete animals[i];
+    std::cout << "---------------------------------------\n\n";
+
+    std::cout << "======= Testing Deep Copy =======\n";
+    Dog dog1;
+    dog1.getBrain()->setIdea(0, "Running around outside");
+    dog1.getBrain()->setIdea(1 ,"Fetch the ball");
+    
+    Dog dog2 = dog1;
+    dog2.getBrain()->setIdea(0,"Sleep all day" );
+
+    std::cout << "Dog1 Idea 0: " << dog1.getBrain()->getIdea(0) << "\n";
+    std::cout << "Dog1 Idea 1: " << dog1.getBrain()->getIdea(1) << "\n";
+    std::cout << "Dog2 Idea 0: " << dog2.getBrain()->getIdea(0) << "\n";
+    std::cout << "Dog2 Idea 1: " << dog2.getBrain()->getIdea(1) << "\n";
+    std::cout << "=============================\n";
+
+    // -------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------
+
+    std::cout << "======== pointers ============\n";
     const Animal* j = new Dog();
     const Animal* i = new Cat();
-    delete j;//should not create a leak
+    delete j;
     delete i;
+    std::cout << "=========================\n";
 
     return 0;
 }
 
-
-
-
-
-
-
-// int main()
-// {
-//     const Animal* meta = new Animal();
-//     const Animal* j = new Dog();
-//     const Animal* i = new Cat();
-//     std::cout << "--------------------------------------------------\n";
-//     std::cout << j->getType() << " " << std::endl;
-//     std::cout << "---------------------------------------------------\n";
-
-//     std::cout << i->getType() << " " << std::endl;
-//     std::cout << "--------------------------------------------------\n";
-
-//     i->makeSound(); //will output the cat sound!
-//     j->makeSound();
-//     meta->makeSound();
-
-//     delete meta;
-//     delete j;
-//     delete i;
-
-//     return 0;
-// }
-
-// #include "WrongAnimal.hpp"
-// #include "WrongCat.hpp"
-
-// int main() {
-//     const WrongAnimal* wrong = new WrongAnimal();
-//     const WrongAnimal* wrongCat = new WrongCat();
-//     std::cout << "--------------1------------------------------------\n";
-
-//     std::cout << wrong->getType() << std::endl;     // WrongAnimal
-//     std::cout << "------------------2--------------------------------\n";
-
-//     std::cout << wrongCat->getType() << std::endl;  // WrongCat
-//     std::cout << "-------------------3-------------------------------\n";
-
-//     wrong->makeSound();       // WrongAnimal sound
-//     std::cout << "-----------------4---------------------------------\n";
-
-//     wrongCat->makeSound();    // ❌ WrongAnimal sound aussi (car pas virtual)
-
-//     delete wrong;
-//     delete wrongCat;
-
-//     return 0;
-// }
