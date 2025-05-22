@@ -1,7 +1,7 @@
-NAME = Animal
+NAME = Program
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-CFILES = main.cpp 
+CFILES = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp 
 
 OBJ = $(CFILES:.cpp=.o)
 
