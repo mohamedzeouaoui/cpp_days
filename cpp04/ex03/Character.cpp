@@ -32,20 +32,24 @@ std::string const & Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-    for (int i = 0; i < 4; ++i) {
-        if (!_inventory[i]) {
+    for (int i = 0; i < 4; ++i)
+    {
+        if (!_inventory[i])
+        {
             _inventory[i] = m;
             break;
         }
     }
 }
 
-void Character::unequip(int idx) {
+void Character::unequip(int idx)
+{
     if (idx >= 0 && idx < 4)
         _inventory[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target) {
+void Character::use(int idx, ICharacter& target)
+{
     if (idx >= 0 && idx < 4 && _inventory[idx])
         _inventory[idx]->use(target);
 }
