@@ -19,3 +19,14 @@ void AMateria::use(ICharacter& target)
     (void)target;
 }
 
+AMateria& AMateria::operator=(const AMateria &obj)
+{
+    this->_type = obj._type;
+    return *this;
+}
+
+AMateria::AMateria(const AMateria &copy)
+{
+    this->_type = copy._type;
+}
+
