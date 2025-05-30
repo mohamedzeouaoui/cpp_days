@@ -9,6 +9,9 @@ protected:
 
 public:
     WrongAnimal();
+    WrongAnimal(WrongAnimal& obj);
+    WrongAnimal(std::string _type);
+    WrongAnimal& operator=(WrongAnimal &obj);
     ~WrongAnimal();
 
     void makeSound() const; // ❌ PAS virtual
