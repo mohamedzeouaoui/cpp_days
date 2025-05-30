@@ -18,7 +18,7 @@ Dog& Dog::operator=(const Dog& other)
     std::cout << "Dog copy assignment operator called\n";
     if (this != &other)
     {
-        delete brain; // Libérer l’ancien
+        // delete brain; // Libérer l’ancien
         brain = new Brain(*other.brain); // Deep copy
     }
     return *this;

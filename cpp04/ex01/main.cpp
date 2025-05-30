@@ -36,10 +36,10 @@ int main()
     Dog dog1;
     dog1.getBrain()->setIdea(0, "Running around outside");
     dog1.getBrain()->setIdea(1 ,"Fetch the ball");
-    
+    std::cout << "================00=============\n";
+
     Dog dog2 = dog1;
     dog2.getBrain()->setIdea(0,"Sleep all day" );
-
     std::cout << "Dog1 Idea 0: " << dog1.getBrain()->getIdea(0) << "\n";
     std::cout << "Dog1 Idea 1: " << dog1.getBrain()->getIdea(1) << "\n";
     std::cout << "Dog2 Idea 0: " << dog2.getBrain()->getIdea(0) << "\n";
