@@ -9,6 +9,9 @@ class AAnimal
 		std::string type;
 	public:
 	    AAnimal();
+        AAnimal(const AAnimal& obj);
+        AAnimal(std::string _type);
+        AAnimal& operator=(const AAnimal &obj);
 	    virtual ~AAnimal();
 		std::string getType() const;
 		void setType(std::string _type);
