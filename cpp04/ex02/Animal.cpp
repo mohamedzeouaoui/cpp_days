@@ -5,6 +5,7 @@ AAnimal::AAnimal()
 {
     std::cout << "Animal constructor called" << std::endl;
     type = "Animal";
+    
 }
 
 AAnimal::~AAnimal()
