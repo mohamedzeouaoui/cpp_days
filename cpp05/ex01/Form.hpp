@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
     private:
@@ -14,6 +16,7 @@ class Form
 
     public:
         Form();
+        Form(const Form &obj);
         Form(std::string name, int gradeToSign, int gradeToExecute);
         ~Form();
 
