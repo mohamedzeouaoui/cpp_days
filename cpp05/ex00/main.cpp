@@ -5,6 +5,7 @@ int main( void )
     try
     {
         Bureaucrat bob("Simo", 151); // Should throw exception
+        std::cout << bob << std::endl;
     }
     catch (std::exception &e)
     {
@@ -14,8 +15,11 @@ int main( void )
     try
     {
         Bureaucrat alice("Zmagri", 2);
+        std::cout << alice << std::endl;
         alice.incrementGrade(); // grade becomes 1
+        std::cout << "next -> " << alice << std::endl;
         alice.incrementGrade(); // should throw GradeTooHighException
+        std::cout << alice << std::endl;
     }
     catch (std::exception &e)
     {
