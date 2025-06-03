@@ -15,15 +15,17 @@ class AForm
     public:
         AForm();
         AForm(std::string name, int gradeToSign, int gradeToExecute);
-        ~AForm();
+        virtual ~AForm();
 
         std::string getName() const;
         bool isSigned() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
         void beSigned(const Bureaucrat &bureaucrat);
-        void execute(const Bureaucrat &executor) const;
-        
+        virtual void execute(const Bureaucrat &executor) const = 0; // Pure virtual function
+        virtual void action() const = 0; // Pure virtual function for derived classes
+        virtual void print() const = 0; // Pure virtual function for derived classes
+
         class GradeTooHighException : public std::exception
         {
             public:
