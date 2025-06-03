@@ -7,10 +7,17 @@ class RobotomyRequestForm : public AForm
         std::string _target;
 
     public:
+        RobotomyRequestForm();
         RobotomyRequestForm(std::string target);
+        RobotomyRequestForm(const RobotomyRequestForm& obj);
         ~RobotomyRequestForm();
 
-        void action() const ;
-        void print() const ;
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& obj);
+        std::string getTarget() const;
+
+        virtual void execute(const Bureaucrat &executor) const;
 };
+
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form);
+
 # endif
