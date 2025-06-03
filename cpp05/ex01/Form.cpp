@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) 
 {
@@ -13,6 +14,10 @@ Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(150), _gradeToEx
     std::cout << "Default constructor called for Form: " << _name << std::endl;
 }
 
+Form::Form(const Form &obj) : _name(obj._name), _isSigned(obj._isSigned), _gradeToSign(obj._gradeToSign), _gradeToExecute(obj._gradeToExecute)
+{
+    std::cout << "Copy constructor called for Form: " << _name << std::endl;
+}
 
 Form::~Form()
 {
