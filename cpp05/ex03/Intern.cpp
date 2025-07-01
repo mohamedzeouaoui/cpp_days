@@ -6,36 +6,27 @@
 
 Intern::Intern()
 {
-    // std::cout << "Intern default constructor called" << std::endl;
+    std::cout << "Intern default constructor called" << std::endl;
 }
 
-// Intern::Intern(const Intern &obj)
-// {
-//     // std::cout << "Intern copy constructor called" << std::endl;
-// }
+Intern::Intern(const Intern &obj)
+{
+    *this = obj;
+    std::cout << "Intern copy constructor called" << std::endl;
+}
 
 Intern::~Intern()
 {
-    // std::cout << "Intern destructor called" << std::endl;
+    std::cout << "Intern destructor called" << std::endl;
 }
 
-// Intern &Intern::operator=(const Intern &obj) {
-//     // std::cout << "Intern assignment operator called" << std::endl;
-//     return *this;
-// }
-
-// AForm *Intern::makeForm(const std::string &formName, const std::string &target) {
-//     AForm *form = NULL;
-//     if (formName == "robotomy request") {
-//         form = new RobotomyRequestForm(target);
-//     } else if (formName == "presidential pardon") {
-//         form = new PresidentialPardonForm(target);
-//     } else if (formName == "shrubbery creation") {
-//         form = new ShrubberyCreationForm(target);
-    //     }
-    //     return form;
-// }
-
+Intern &Intern::operator=(const Intern &obj)
+{
+    if (this == &obj)
+        return *this;
+    std::cout << "Intern assignment operator called" << std::endl;
+    return *this;
+}
 
 std::ostream &operator<<(std::ostream &os, const Intern &intern)
 {
