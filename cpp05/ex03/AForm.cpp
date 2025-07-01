@@ -80,14 +80,6 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
     _isSigned = true;
 }
 
-void AForm::execute(const Bureaucrat &executor) const
-{
-    if (!_isSigned)
-        throw AFormNotSignedException();
-    if (executor.getGrade() > _gradeToExecute)
-        throw GradeTooLowException();
-}
-
 const char* AForm::AFormNotSignedException::what() const throw()
 {
     return "AForm is not signed";

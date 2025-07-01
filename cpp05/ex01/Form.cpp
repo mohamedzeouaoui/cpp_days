@@ -64,16 +64,16 @@ std::ostream &operator<<(std::ostream &os, const Form &form)
 
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-    if (bureaucrat.getGrade() > _gradeToSign)
+    if (bureaucrat.getGrade() > this->_gradeToSign)
         throw GradeTooLowException();
-    _isSigned = true;
+    this->_isSigned = true;
 }
 
 void Form::execute(const Bureaucrat &executor) const
 {
-    if (!_isSigned)
+    if (!this->_isSigned)
         throw FormNotSignedException();
-    if (executor.getGrade() > _gradeToExecute)
+    if (executor.getGrade() > this->_gradeToExecute)
         throw GradeTooLowException();
 }
 

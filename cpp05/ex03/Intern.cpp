@@ -6,19 +6,81 @@
 
 Intern::Intern()
 {
-    std::cout << "Intern default constructor called" << std::endl;
+    // std::cout << "Intern default constructor called" << std::endl;
 }
 
-Intern::Intern(const Intern &obj)
+// Intern::Intern(const Intern &obj)
+// {
+//     // std::cout << "Intern copy constructor called" << std::endl;
+// }
+
+Intern::~Intern()
 {
-    std::cout << "Intern copy constructor called" << std::endl;
+    // std::cout << "Intern destructor called" << std::endl;
 }
 
-Intern::~Intern() {
-    std::cout << "Intern destructor called" << std::endl;
+// Intern &Intern::operator=(const Intern &obj) {
+//     // std::cout << "Intern assignment operator called" << std::endl;
+//     return *this;
+// }
+
+// AForm *Intern::makeForm(const std::string &formName, const std::string &target) {
+//     AForm *form = NULL;
+//     if (formName == "robotomy request") {
+//         form = new RobotomyRequestForm(target);
+//     } else if (formName == "presidential pardon") {
+//         form = new PresidentialPardonForm(target);
+//     } else if (formName == "shrubbery creation") {
+//         form = new ShrubberyCreationForm(target);
+    //     }
+    //     return form;
+// }
+
+
+std::ostream &operator<<(std::ostream &os, const Intern &intern)
+{
+    os << "Intern object at address: " << &intern;
+    return os;
 }
 
-Intern &Intern::operator=(const Intern &obj) {
-    std::cout << "Intern assignment operator called" << std::endl;
-    return *this;
+static AForm* createShrubbery(const std::string& target) 
+{
+    return new ShrubberyCreationForm(target);
+}
+
+static AForm* createRobotomy(const std::string& target) 
+{
+    return new RobotomyRequestForm(target);
+}
+
+static AForm* createPardon(const std::string& target) 
+{
+    return new PresidentialPardonForm(target);
+}
+
+AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
+{
+    typedef AForm* (*FormCreator)(const std::string&);
+
+    struct FormEntry
+    {
+        const char* name;
+        FormCreator create;
+    };
+
+    FormEntry forms[] = {
+        {"shrubbery creation", createShrubbery},
+        {"robotomy request", createRobotomy},
+        {"presidential pardon", createPardon}
+    };
+
+    for (int i = 0; i < 3; ++i) {
+        if (formName == forms[i].name) {
+            std::cout << "Intern creates " << formName << std::endl;
+            return forms[i].create(target);
+        }
+    }
+
+    std::cout << "Intern: Error! Unknown form name \"" << formName << "\"" << std::endl;
+    return NULL;
 }

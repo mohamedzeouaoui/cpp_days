@@ -1,55 +1,71 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation", 145, 137), _target("Default")
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), 
+    _target("default_target") 
 {
-    std::cout << "Default constructor called for ShrubberyCreationForm: " << _target << std::endl;
-}
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery Creation", 145, 137), _target(target)
-{
-    std::cout << "Constructor called for ShrubberyCreationForm: " << _target << std::endl;
+    std::cout << "ShrubberyCreationForm default constructor called for target: " << _target << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) 
+    : AForm("ShrubberyCreationForm", 145, 137), _target(target) 
 {
-    std::cout << "Destructor called for ShrubberyCreationForm: " << _target << std::endl;
+    std::cout << "ShrubberyCreationForm constructor called for target: " << _target << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : AForm(obj), _target(obj._target)
+ShrubberyCreationForm::~ShrubberyCreationForm() 
 {
-    std::cout << "Copy constructor called for ShrubberyCreationForm: " << _target << std::endl;
+    std::cout << "ShrubberyCreationForm destructor called for target: " << _target << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) 
+    : AForm(obj), _target(obj._target) 
 {
-    if (this != &obj)
-    {
-        AForm::operator=(obj); // Call base class assignment operator
-        _target = obj._target; // Copy target
+    std::cout << "ShrubberyCreationForm copy constructor called for target: " << _target << std::endl;
+}
+
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj) 
+{
+    if (this != &obj) {
+        AForm::operator=(obj);
+        _target = obj._target;
     }
+    std::cout << "ShrubberyCreationForm assignment operator called for target: " << _target << std::endl;
     return *this;
 }
 
-std::string ShrubberyCreationForm::getTarget() const
+std::string ShrubberyCreationForm::getTarget() const 
 {
     return _target;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const 
 {
-    if (!isSigned())
-        throw AForm::AFormNotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw AForm::GradeTooLowException();
+    if (!isSigned()) {
+        throw AFormNotSignedException();
+    }
+    if (executor.getGrade() > getGradeToExecute()) {
+        throw GradeTooLowException();
+    }
 
-    std::cout << "Creating shrubbery at " << _target << std::endl;
+    std::ofstream file((_target + "_shrubbery").c_str());
+
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open file for writing.");
+    }
+
+    file << "ASCII Art of a shrubbery for target: " << _target << std::endl;
+    file << "       _-_\n"
+           "    /~~   ~~\\\n"
+           " /~~         ~~\\\n"
+           "{               }\n"
+           " \\  _-     -_  /\n"
+           "   ~  \\\\ //  ~\n"
+           "_- -   | | _- _\n"
+           "  _ -  | |   -_\n"
+           "      // \\\\\n";
+    file.close();
+
+    std::cout << "Shrubbery created for target: " << _target << std::endl;
 }
 
-std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm &form)
-{
-    os << "ShrubberyCreationForm: " << form.getName()
-       << ", Target: " << form.getTarget()
-       << ", Signed: " << form.isSigned()
-       << ", Grade to Sign: " << form.getGradeToSign()
-       << ", Grade to Execute: " << form.getGradeToExecute();
-    return os;
-}
+

@@ -5,7 +5,7 @@
 int main()
 {
     try {
-        Bureaucrat bob("Bob", 50);
+        Bureaucrat bob("Bob", 45);
         Form formA("Form A", 45, 30);
         
         std::cout << bob << std::endl;
@@ -16,6 +16,9 @@ int main()
 
         formA.beSigned(bob);
         std::cout << "After signing: " << formA << std::endl;
+
+        formA.execute(bob);
+        std::cout << "After execute: " << formA << std::endl;
 
         bob.decrementGrade();
         std::cout << "After decrementing grade: " << bob << std::endl;
