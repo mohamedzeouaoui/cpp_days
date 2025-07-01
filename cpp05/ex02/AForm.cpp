@@ -48,9 +48,9 @@ AForm &AForm::operator=(const AForm &obj)
 {
     if (this != &obj)
     {
-        _name = obj._name;
-        _gradeToSign = obj._gradeToSign;
-        _gradeToExecute = obj._gradeToExecute;
+        // _name = obj._name;
+        // _gradeToSign = obj._gradeToSign;
+        // _gradeToExecute = obj._gradeToExecute;
         _isSigned = obj._isSigned;
     }
     return *this;
