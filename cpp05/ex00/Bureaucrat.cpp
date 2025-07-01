@@ -14,6 +14,26 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Destructor called for Bureaucrat: " << _name << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &obj) : _name(obj._name), _grade(obj._grade)
+{
+    std::cout << "Copy constructor called for Bureaucrat: " << _name << std::endl;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
+{
+    if (this == &obj)
+        return *this;
+    std::cout << "Assignment operator called for Bureaucrat: " << _name << std::endl;
+    _grade = obj._grade; // _name is const, so we cannot assign it
+    return *this;
+}
+
+Bureaucrat::Bureaucrat()
+    : _name("Default"), _grade(150) // Default values
+{
+    std::cout << "Default constructor called for Bureaucrat: " << _name << std::endl;
+}
+
 std::string Bureaucrat::getName() const
 {
     return _name;
