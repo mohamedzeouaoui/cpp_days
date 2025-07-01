@@ -66,7 +66,11 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() > this->_gradeToSign)
         throw GradeTooLowException();
+    if (this->_isSigned)
+        throw FormAlreadySignedException();
+    std::cout << "After signing: " << *this << std::endl;
     this->_isSigned = true;
+    
 }
 
 void Form::execute(const Bureaucrat &executor) const
@@ -75,6 +79,7 @@ void Form::execute(const Bureaucrat &executor) const
         throw FormNotSignedException();
     if (executor.getGrade() > this->_gradeToExecute)
         throw GradeTooLowException();
+    std::cout << "After executing: " << *this << std::endl;
 }
 
 const char* Form::FormNotSignedException::what() const throw()
