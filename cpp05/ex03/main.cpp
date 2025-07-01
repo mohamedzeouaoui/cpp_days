@@ -15,7 +15,8 @@ int main() {
     }
 
     AForm* unknown = someRandomIntern.makeForm("wrong form", "Nowhere");
-    if (unknown) delete unknown;
+    if (unknown)
+        delete unknown;
 
     return 0;
 }
