@@ -49,7 +49,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
     }
 
     std::cout << "Bzzzzz... Vrrrrrrr...\n";
-
+    srand(time(0)); // Seed the random number generator
     std::cout << "RobotomyRequestForm executed for target: " << _target << std::endl;
     if (rand() % 2) {
         std::cout << "RobotomyRequestForm successful for target: " << _target << std::endl;
