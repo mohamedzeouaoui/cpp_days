@@ -18,4 +18,5 @@ class Intern
 
 std::ostream &operator<<(std::ostream &os, const Intern &intern);
 
+
 #endif
