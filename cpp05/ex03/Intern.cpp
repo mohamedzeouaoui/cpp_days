@@ -51,12 +51,10 @@ static AForm* createPardon(const std::string& target)
 
 AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
 {
-    typedef AForm* (*FormCreator)(const std::string&);
-
     struct FormEntry
     {
         const char* name;
-        FormCreator create;
+        AForm* (*create)(const std::string& target);
     };
 
     FormEntry forms[] = {
