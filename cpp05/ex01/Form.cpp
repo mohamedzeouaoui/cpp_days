@@ -24,6 +24,16 @@ Form::~Form()
     std::cout << "Destructor called for Form: " << _name << std::endl;
 }
 
+Form &Form::operator=(const Form &obj)
+{
+    if (this != &obj)
+    {
+        // _name and other const members are not assignable
+        _isSigned = obj._isSigned;
+    }
+    return *this;
+}
+
 std::string Form::getName() const
 {
     return _name;
@@ -68,8 +78,8 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
         throw GradeTooLowException();
     if (this->_isSigned)
         throw FormAlreadySignedException();
-    std::cout << "After signing: " << *this << std::endl;
     this->_isSigned = true;
+    std::cout << "After signing: " << *this << std::endl;
     
 }
 
