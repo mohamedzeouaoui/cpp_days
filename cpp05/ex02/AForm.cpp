@@ -48,9 +48,7 @@ AForm &AForm::operator=(const AForm &obj)
 {
     if (this != &obj)
     {
-        // _name = obj._name;
-        // _gradeToSign = obj._gradeToSign;
-        // _gradeToExecute = obj._gradeToExecute;
+        // _name and other const members are not assignable
         _isSigned = obj._isSigned;
     }
     return *this;
@@ -80,8 +78,6 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
         throw AFormAlreadySignedException();
     if (bureaucrat.getGrade() > _gradeToSign)
         throw GradeTooLowException();
-    if (_isSigned)
-        throw AFormAlreadySignedException();
     _isSigned = true;
     std::cout << bureaucrat.getName() << " signed " << _name << std::endl;
 }
