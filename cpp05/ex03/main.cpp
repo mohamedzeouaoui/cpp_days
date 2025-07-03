@@ -1,22 +1,28 @@
 #include "Intern.hpp"
 #include "Bureaucrat.hpp"
 
-int main() {
-    Intern someRandomIntern;
-    AForm* form;
+int main()
+{
+    try{
+        Intern someRandomIntern;
+        AForm* form;
 
-    form = someRandomIntern.makeForm("robotomy request", "Bender");
+        form = someRandomIntern.makeForm("robotomy request", "Bender");
+        if (form) {
+            Bureaucrat bob("Bob", 1);
+            bob.signForm(*form);
+            bob.executeForm(*form);
+            delete form;
+        }
 
-    if (form) {
-        Bureaucrat bob("Bob", 1);
-        bob.signForm(*form);
-        bob.executeForm(*form);
-        delete form;
+        AForm* unknown = someRandomIntern.makeForm("wrong form", "Nowhere");
+        if (unknown)
+            delete unknown;
     }
-
-    AForm* unknown = someRandomIntern.makeForm("wrong form", "Nowhere");
-    if (unknown)
-        delete unknown;
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 
     return 0;
 }
