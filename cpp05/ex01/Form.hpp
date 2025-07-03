@@ -19,6 +19,7 @@ class Form
         Form(const Form &obj);
         Form(std::string name, int gradeToSign, int gradeToExecute);
         ~Form();
+        Form &operator=(const Form &obj);
 
         std::string getName() const;
         bool isSigned() const;
