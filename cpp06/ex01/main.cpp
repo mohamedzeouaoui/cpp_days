@@ -21,3 +21,4 @@ int main()
     std::cout << "Deserialized - Text: " << deserialized->stringg << std::endl;
     return 0;
 }
+
