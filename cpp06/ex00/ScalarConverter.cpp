@@ -62,6 +62,8 @@ bool ScalarConverter::isFloat(const std::string& input)
         }
         else if (!std::isdigit(input[i]))
         {
+            if (i == input.length() - 1 && input[i] == 'f') // Check for 'f' at the end
+                break; // Valid float ending with 'f'
             return false; // Invalid character
         }
         i++;
