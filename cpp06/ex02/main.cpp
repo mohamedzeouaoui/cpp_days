@@ -5,6 +5,7 @@
 
 int main()
 {
+
     std::srand(std::time(NULL)); // initialisation de rand()
 
     Base* obj = generate();         // générer une instance aléatoire
@@ -17,3 +18,16 @@ int main()
 }
 
 
+
+    // Base* obj = new A();
+    // obj->value = 42;
+    // obj->print() ;
+    // A* a = dynamic_cast<A*>(obj);
+    // if (a) {
+        // std::cout << "Dynamic cast to A successful." << std::endl;
+    // } else {
+        // std::cout << "Dynamic cast to A failed." << std::endl;
+    // }
+    // obj->print();
+    // a->print();
+    // std::cout << "Value in A: " << a->value << std::endl;
