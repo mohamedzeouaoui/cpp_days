@@ -44,6 +44,8 @@ bool ScalarConverter::isInt(const std::string& input)
 
 bool ScalarConverter::isFloat(const std::string& input)
 {
+    if(input == "nanf" || input == "+inff" || input == "-inff")
+        return true; // Special cases for float
     if (input.empty())
         return false;
 
@@ -74,6 +76,8 @@ bool ScalarConverter::isFloat(const std::string& input)
 
 bool ScalarConverter::isDouble(const std::string& input)
 {
+    if (input == "-inf" || input == "+inf" || input == "nan")
+        return true; // Special cases for double
     if (input.empty())
         return false;
 
