@@ -44,6 +44,7 @@ class Array
 
         T& operator[](size_t index)
         {
+
             if (index >= _size)
                 throw std::out_of_range("Index out of range");
             return _array[index];
@@ -51,6 +52,8 @@ class Array
 
         const T& operator[](size_t index) const
         {
+            // std::cout << "const operator[] called" << std::endl;
+
             if (index >= _size)
                 throw std::out_of_range("Index out of range");
             return _array[index];
