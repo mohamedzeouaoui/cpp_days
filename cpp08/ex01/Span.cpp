@@ -8,7 +8,7 @@ Span::Span(unsigned int N)
 Span::Span(const Span& other): _numbers(other._numbers), 
         max_size(other.max_size)
 {
-    
+    return;
 }
 
 Span& Span::operator=(const Span& other)
@@ -21,10 +21,10 @@ Span& Span::operator=(const Span& other)
     return *this;
 }
 
-Span::~Span() {
-
+Span::~Span()
+{
+    return;
 }
-
 
 void Span::add_numbers(int nuumber)
 {
@@ -33,6 +33,7 @@ void Span::add_numbers(int nuumber)
         throw std::overflow_error("Span is already full");
     }
     _numbers.push_back(nuumber);
+    return;
 }
 
 int Span::shortestSpan()
@@ -79,6 +80,5 @@ int Span::longestSpan()
         i++;
     }
     return res;
-    
 }
 
