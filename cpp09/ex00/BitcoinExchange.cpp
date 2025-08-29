@@ -71,43 +71,18 @@ void valid_line(std::string line)
         throw big_number();
 }
 
+float findClosestDate(const std::map<std::string, double>& db, const std::string& date) {
+    std::map<std::string, double>::const_iterator it = db.lower_bound(date);
 
-
-
-
-
-
-float getRate(const std::string &date, std::map<std::string , double>& data) 
-{
-        std::map<std::string, float>::iterator it = data.lower_bound(date);
-
-        if (it == data.end()) {
-            --it; // dernière date disponible
-        } else if (it->first != date) {
-            if (it == data.begin()) {
-                std::cerr << "Error: no earlier date available" << std::endl;
-                return -1;
-            }
-            --it; // date inférieure la plus proche
-        }
-
+    if (it != db.end() && it->first == date) {
         return it->second;
+    }
+    if (it == db.begin()) {
+        throw std::runtime_error("Error: no earlier date in database.");
+    }
+    --it;
+    return it->second;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void input_file(std::map<std::string , double>& data,std::string file_inp)
 {
@@ -128,22 +103,12 @@ void input_file(std::map<std::string , double>& data,std::string file_inp)
         try{	
 			valid_line(line);
 			std::string key = line.substr(0, 10);
-			// double nb_btc = atof(line.substr(13).c_str());
-
-
-			if (data.find(key) != data.end()) {
-			    float rate = data[key];
-			    std::cout << "Rate: " << rate << std::endl;
-
-			} else {
-				
-				getRate(key , std::map<std::string , double>& data) 
-
-				// std::map<std::string, float>::iterator it = data.lower_bound(key);
-			    std::cout << "Date not found!" << std::endl;
-			}
-
-		}
+			double nb_btc = atof(line.substr(13).c_str());
+			double price = findClosestDate(data, key);
+			double result = price * nb_btc;
+        std::cout << key << " => " << nb_btc << " = " << result << std::endl;
+    }
+		
 		catch(invalid_input &e)
 		{
             std::cout << e.what() << line << "\n";
