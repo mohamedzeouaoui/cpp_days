@@ -14,13 +14,12 @@
 
 class RPN
 {
-    public:
-		static long evaluate(const std::string &expr);
-    private:
-		static bool isOperator(char c);
-        static long apply_Op(long a, long b, char op);
+public:
+  static long evaluate(const std::string &expr);
+
+private:
+  static bool isOperator(char c);
+  static long apply_Op(long a, long b, char op);
 };
-
-
 
 #endif
