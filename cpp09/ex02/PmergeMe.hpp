@@ -1,24 +1,16 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
-#include <iostream>
-#include <algorithm>
-#include <map>
-#include <fstream>
-#include <utility>
-#include <exception>
-#include <string.h>
-#include <string>
-#include <ctype.h>
-#include <sstream>
-
 class PmergeMe
 {
-    private:
+private:
+    PmergeMe();
+    PmergeMe(const PmergeMe &other);
+    PmergeMe &operator=(const PmergeMe &other);
 
-    public:
-        PmergeMe();
-        ~PmergeMe();
+public:
+    ~PmergeMe();
+    static void sort(int argc, char **argv);
 };
 
 #endif
