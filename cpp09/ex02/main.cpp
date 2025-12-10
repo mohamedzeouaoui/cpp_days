@@ -1,11 +1,9 @@
 #include "PmergeMe.hpp"
-#include <stack>
-#include <sstream>
-#include <stdexcept>
-#include <cctype>
 
 int main(int argc, char **argv)
 {
+    PmergeMe::sort(argc, argv);
     
-        return 1;
+
+    return 0;
 }
