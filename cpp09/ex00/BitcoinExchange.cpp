@@ -19,8 +19,6 @@ void insert_data(std::map<std::string, double> &data)
         {
             float value_float = std::atof(value.c_str());
             data[data1] = value_float;
-            std::map<std::string, double>::iterator it = data.find(data1);
-            std::cout << "Inserted: " << it->first << " => " << it->second << std::endl;
         }
     }
 }
