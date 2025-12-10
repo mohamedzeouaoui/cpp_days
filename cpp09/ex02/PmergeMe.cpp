@@ -155,19 +155,7 @@ static void mergeInsertionSort(std::vector<int> &d)
         }
         else
         {
-            // Find position of a[idx] in d to limit search
-            size_t searchLimit = d.size();
-            for (size_t j = 0; j < d.size(); j++)
-            {
-                if (d[j] == a[idx])
-                {
-                    searchLimit = j;
-                    break;
-                }
-            }
-
-            // Binary insert b[idx] into d[0..searchLimit-1]
-            binaryInsert(b[idx], d, searchLimit);
+            binaryInsert(b[idx], d, d.size());
         }
     }
 }
@@ -276,17 +264,7 @@ static void mergeInsertionSort(std::deque<int> &d)
         }
         else
         {
-            size_t searchLimit = d.size();
-            for (size_t j = 0; j < d.size(); j++)
-            {
-                if (d[j] == a[idx])
-                {
-                    searchLimit = j;
-                    break;
-                }
-            }
-
-            binaryInsert(b[idx], d, searchLimit);
+            binaryInsert(b[idx], d, d.size());
         }
     }
 }
