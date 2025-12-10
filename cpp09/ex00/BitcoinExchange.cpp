@@ -84,15 +84,6 @@ float findClosestDate(const std::map<std::string, double> &db, const std::string
 {
     std::map<std::string, double>::const_iterator it = db.lower_bound(date);
 
-    // if (it != db.end() && it->first == date)
-    // {
-    //     return it->second;
-    // }
-    // if (it == db.begin())
-    // {
-    //     throw std::runtime_error("Error: no earlier date in database.");
-    // }
-    // --it;
     if (it == db.end())
     {
         // date > toutes les dates : prendre le dernier
