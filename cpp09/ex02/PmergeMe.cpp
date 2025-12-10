@@ -363,29 +363,29 @@ void PmergeMe::sort(int argc, char **argv)
               << " elements with std::deque  : "
               << (end_deq - start_deq) << " us" << std::endl;
 
-    for (size_t k = 0; k < vec.size(); k++ )
-    {
-        if (k >0 && vec[k] < vec[k-1])
-        {
-            std::cout << "error in sort" << std::endl;
-        }
-        else if (k == vec.size()-1)
-        {
-            std::cout << "all good in vec" << std::endl;
-        }
-    }
+    // for (size_t k = 0; k < vec.size(); k++ )
+    // {
+    //     if (k >0 && vec[k] < vec[k-1])
+    //     {
+    //         std::cout << "error in sort" << std::endl;
+    //     }
+    //     else if (k == vec.size()-1)
+    //     {
+    //         std::cout << "all good in vec" << std::endl;
+    //     }
+    // }
 
-        for (size_t k = 0; k < deq.size(); k++ )
-    {
-        if (k >0 && deq[k] < deq[k-1])
-        {
-            std::cout << "error in sort" << std::endl;
-            break;
-        }
-        else if (k == deq.size()-1)
-        {
-            std::cout << "all good in deque" << std::endl;
-        }
-    }
+    //     for (size_t k = 0; k < deq.size(); k++ )
+    // {
+    //     if (k >0 && deq[k] < deq[k-1])
+    //     {
+    //         std::cout << "error in sort" << std::endl;
+    //         break;
+    //     }
+    //     else if (k == deq.size()-1)
+    //     {
+    //         std::cout << "all good in deque" << std::endl;
+    //     }
+    // }
     
 }
