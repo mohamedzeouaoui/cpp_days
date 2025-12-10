@@ -375,7 +375,7 @@ void PmergeMe::sort(int argc, char **argv)
     //     }
     // }
 
-    //     for (size_t k = 0; k < deq.size(); k++ )
+    // for (size_t k = 0; k < deq.size(); k++ )
     // {
     //     if (k >0 && deq[k] < deq[k-1])
     //     {
